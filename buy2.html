@@ -1,0 +1,292 @@
+
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+	<title>视频欣赏</title>
+	<script src="/Public/index/js/jquery.js"></script>
+	<script src="/Public/index/js/jquery.dialog.js"></script>
+	<script src="/Public/layer/layer.js" type="text/javascript"></script>
+	<script src="/Public/index/js/clipboard.min.js"></script>
+	<!-- <link href="/Public/new/css/expense.css" type="text/css" rel="stylesheet" /> -->
+	<link href="/Public/index/css/red_packet.css" type="text/css" rel="stylesheet" />
+	<style>
+		.footer {
+			position: fixed;
+			bottom: 0;
+			z-index: 9999;
+			width: 100%;
+			height: 50px;
+			background: #323136;
+			line-height: 50px;
+			text-align: center;
+		}
+
+		.footer a {
+			background: url(/Public/new/img/tousu.png) no-repeat 6px;
+			;
+			background-size: 30px 20px;
+			color: #fff;
+			display: block;
+			width: 100px;
+			margin: 0 auto;
+		}
+
+		.erwei {
+			width: 100%;
+			height: 100%;
+			background: rgba(120, 120, 120, 0.7);
+			position: absolute;
+			top: 0;
+			z-index: 2;
+		}
+
+		.erwei .erweima {
+			width:200px;
+			height:200px;
+			background:#fff;
+			margin:0 auto;
+			position:relative;
+			border-radius:10px;
+			margin-top:35%; 
+			z-index: 500;
+		}
+
+		.erwei .erweima img {
+			max-width: 100%;
+		}
+		
+		.flex {
+			display: -webkit-flex;
+			display: flex;
+		}
+
+		.flex-1 {
+			flex: 1;
+			-webkit-flex: 1;
+		}
+		
+		
+		.footer-btnGroup, .tips {
+			margin-left: auto;
+			margin-right: auto;
+			width: 260px;
+		}
+
+		.tips {
+			line-height: 24px; 
+			color: #EF523E;
+			padding: 5px 10px;
+			margin-bottom: 60px;
+			background-color: rgba(255, 255, 255, 0.65);
+			border-radius: 10px;
+		}
+
+		.buttons {
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			border-radius: 10px;
+			padding: 0 40px;
+		}
+
+		.flex-buttons {
+			padding: 0 5px;
+		}
+
+		.buttons-primary {
+			background:#fff;
+			border-radius: 8px; 
+			color:#EF523E;
+			display:inline-block;
+			width:100%;
+			height:40px;
+			font-weight:bold;
+			border: none;
+		}
+
+		.buttons-light {
+			background:#fff;
+			border-radius:8px; 
+			color:#EF523E;
+			display:inline-block;
+			width:100%;
+			height:40px;
+			font-weight:bold;
+			border: none;
+		}
+
+		#background {
+			position:absolute;
+			z-index:-1;
+			width:100%;
+			height:100%;
+			top:0px;
+			left:0px;
+			/*background: url(/Public/new/img/animate.gif) no-repeat center center;*/
+			background-size: cover;
+		}
+
+		.describe {
+			/* position: absolute;
+			top: 20px;
+			left: 50%;
+			transform: translateX(-50%); */
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 20px;
+			width: 260px;
+			color: #fff;
+			z-index: 999;
+			font-size: 18px;
+			line-height: 24px;
+			text-align: left;
+		}
+		.text-blink {
+			-webkit-animation: change 0.8s  ease-in  infinite ; 
+			-o-animation: change 0.8s  ease-in  infinite ;
+			-moz-animation: change 0.8s  ease-in  infinite ;
+			animation: change 0.8s  ease-in  infinite ;
+			color:#ddd;
+		
+		}
+		@keyframes change {  
+            0%{ 
+				text-shadow: 2px 2px 1px rgba(0,0,0,.4), 0 0 4px #69F0AE, 0 0 8px rgba(0, 230, 118, .75), 0 0 9px rgba(0, 230, 118, .75), 0 0 18px rgba(0, 230, 118, .75);
+				}  
+            50%{ 
+				text-shadow: 2px 2px 1px rgba(0,0,0,.4), 0 0 4px #fe3a80, 0 0 8px rgba(255, 0, 91, .75), 0 0 9px rgba(255, 0, 91, .75), 0 0 18px rgba(255, 0, 91, .75);
+				}  
+            100%{     
+				text-shadow: 2px 2px 1px rgba(0,0,0,.4), 0 0 4px #42A5F5, 0 0 8px rgba(33, 150, 243, .75), 0 0 9px rgba(33, 150, 243, .75), 0 0 18px rgba(33, 150, 243, .75);
+
+				
+			}  
+		}  
+		
+		body {
+			width: 100%;
+			height: 100%;
+			background: url(/Public/new/img/blur-img2.jpg) repeat fixed;
+			background-size: cover;
+		}
+	</style>
+
+
+
+</head>
+
+<body >
+		<div class="red-packet-bg" style="">
+				<div class="describe">
+					<span class="text-blink">《国产》极品亚裔骚女Ayisa学生装诱惑男友做爱自拍，超刺激</span>
+				</div>
+				<div class="red-packet ">
+						<h3 class="red-packet__title text-center f-16 c-white">
+							<span class="f-25">4.5</span> 
+							<span class="f-12">元</span>
+						</h3>
+						<div class="red-packet__decorate">
+								<!-- <i class="red-packet__decorate-circle"></i> -->
+						</div>
+						<p class="text-center c-white f-12">支付看视频，
+							 金额固定						</p>
+						<div class="red-packet__content">
+							<div class="buttons mt-30">
+			
+																	<a onClick="alipaynow()" class="buttons-primary">支付宝</a>
+
+												
+							</div>
+							
+							<div class="text-center c-white mt-30"> 视频大小：，时长00:10:58分</div>
+								
+						</div>
+						
+				</div>
+				<div class="flex footer-btnGroup mt-10">
+										<div class="buttons mt-10 flex-1 flex-buttons">
+						<button type="button" class="buttons-light" onClick="more()">他的所有视频</button>
+					</div>
+				</div>
+				<!-- <div class="f-12 pl-20 pr-20 mt-10 tips">
+					<p>注：付款后无需操作，请等待几秒后系统自动跳转至播放页面，如提前点击操作会造成无法观看！
+							请在菜单中选择在浏览器中打开，以完成支付，</p>
+					<p>注：本服务器采取微信和支付宝双支付，如遇微信无法支付请使用支付宝支付。</p>
+					<p>1.微信支付时时出现:风险提示，请放心支付，可以正常使用和观看。</p>
+					<p>2.支付宝付款客户支付完成后点击左上角返回至浏览器观看。</p>
+					<p>3.微信支付的客户付款后不要动自动跳转至观看页面观看。</p>
+				</div> -->
+		</div>
+
+		
+	
+	<div class="footer">
+		<a href="/index.php/web/tousu/index.html"> &nbsp;&nbsp;&nbsp;投诉</a>
+	</div>
+
+
+
+	<div class="erwei" style="display:none;">
+		<div class="erweima">
+			<p style="border-bottom:1px solid #ccc;    text-align: center;height:30px;">
+				<a onClick="dianji()" style="position: absolute; top: 0; left: 4%;font-size:26px;">×</a> 添加微信号</p>
+
+			<p style="font-size:16px;text-align: center; margin-top:10px;"> 招收优质代理, 请添加微信: </p>
+
+				
+
+
+		</div>
+	</div>
+
+
+
+</body>
+
+</html>
+<!-- Trigger -->
+
+<script>
+	/*window.onload = function(){
+		callpay();
+	}*/
+ var clipboard = new ClipboardJS('.dsbtn');
+	function wxpaynow() {
+		location.href = "";
+	}
+	function smpaynow() {
+		location.href = "";
+
+	}
+
+	function alipaynow() {
+		location.href = "http://www.dyalw.cn/index.php/web/wappay/payment/orderno/1541568288h3wf7";
+
+	}
+	function more(){
+
+		location.href = "/index.php/web/yuantu/more/openid/77889.html";
+	}
+</script>
+
+
+<script>
+	function dj() {
+		$('.nav').css('display', 'none');
+		$('.sheng').css('display', 'block');
+	}
+	function da() {
+		$('.nav').css('display', 'block');
+		$('.sheng').css('display', 'none');
+	}
+	function sc() {
+		$('.erwei').css('display', 'block');
+
+	}
+	function dianji() {
+		$('.erwei').css('display', 'none');
+
+	}
+</script>
