@@ -23,4 +23,25 @@ class Video
         $videos = Db::query($sql);
         return $videos;
     }
+
+    /**
+     * 保存第三方视频库
+     * @param array $videos
+     */
+    public static function saveThirdVideo(array $videos)
+    {
+        $sql = 'insert into third_video(video_name,video_price,video_url,video_pic,`time`) values(?,?,?,?,?)';
+        $db = Db::getIns();
+        foreach($videos as $video)
+        {
+            $stmt = $db -> prepare($sql);
+            $stmt -> execute(array(
+                $video['title'],
+                '3',
+                $video['m3u8'],
+                $video['img'],
+                time()
+            ));
+        }
+    }
 }

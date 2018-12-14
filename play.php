@@ -1,13 +1,19 @@
 <?php
 include('init.php');
 $host = 'http://video.z35i.cn';
-$id = $_GET['vid'];
+$id = $_GET['vid']+0;
+$orderId = $_GET['order_id']+0;
 if(!$id){
     header('Location:list.php');
 }
 $video = Video::getVideoById($id);
 if(!$video){
     header('Location:list.php');
+}
+//检查支付
+$isPay = false;
+if(!$isPay){
+    header('Location:checkpay.php?order_id='.$orderId);
 }
 ?>
 <!DOCTYPE html>
