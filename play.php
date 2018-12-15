@@ -1,20 +1,20 @@
 <?php
 include('init.php');
-$host = 'http://video.z35i.cn';
+//$host = 'http://video.z35i.cn';
 $id = $_GET['vid']+0;
-$orderId = $_GET['order_id']+0;
 if(!$id){
     header('Location:list.php');
+}
+//检查支付
+$isPay = Video::canPlay($id,session_id());
+if(!$isPay){
+    header('Location:buy.php?vid='.$id);
 }
 $video = Video::getVideoById($id);
 if(!$video){
     header('Location:list.php');
 }
-//检查支付
-$isPay = false;
-if(!$isPay){
-    header('Location:checkpay.php?order_id='.$orderId);
-}
+$pages = ceil(Video::getVideoCount()/8);
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,7 +60,7 @@ if(!$isPay){
 	
      <dl style="width: 358px;">
          <dt style="height: 88.3365px;"><em></em>
-             <img src="<?php echo $host?>{{d[i].video_pic}}" style="height: 88.3365px; display: inline;" onerror="this.src='./static/img/moren.jpg'">
+             <img src="{{d[i].video_pic}}" style="height: 88.3365px; display: inline;" onerror="this.src='./static/img/moren.jpg'">
          </dt>
          <dd>
 <span style="min-height: 58.3365px;">{{d[i].video_name}}</span>
@@ -95,8 +95,8 @@ variable: 'player',
 loop: true,
 //autoplay: true, 
 poster: '', 
-//video:'https://v-kankan.com/20181031/4385_9dd491d6/index.m3u8'
-video:'<?php echo $host.'/'.$video['video_url'];?>'
+//video:'https://v-kankan.com/20181031/4385_9dd491d6/index.m3u8' 这个链接还能用
+video:'<?php echo $video["video_url"];?>'
 };
 var player = new ckplayer(videoObject);
 </script>
@@ -140,7 +140,7 @@ function Ajaxpage(curr){
                 article_list(data); //模板赋值
                 laypage({
                     cont: $('#AjaxPage'),//容器。值支持id名、原生dom对象，jquery对象,
-                    pages:'27',//总页数
+                    pages:'<?php echo $pages;?>',//总页数
                     skip: true,//是否开启跳页
                     skin: '#1AB5B7',//分页组件颜色
                     curr: curr || 1,

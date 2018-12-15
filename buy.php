@@ -8,6 +8,10 @@ $video = Video::getVideoById($id);
 if(!$video){
     header('Location:list.php');
 }
+//检查是否支付，跳转到播放页面
+if(Video::canPlay($id,session_id())){
+    header('Location:play.php?vid='.$id);
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +27,7 @@ if(!$video){
 //function jp() {location.href="http://www.qq.com/babygohome/?pgv_ref=404";}//返回地址
 //setTimeout('hh();', 50);  
 </script> 
+<script src="https://cdn.bootcss.com/jquery/1.8.1/jquery.js"></script>
 <style>
 body{ padding:0; margin:0; font-family: "微软雅黑", "宋体";background:#302f34;}
 ul,li,input,span{ padding:0; margin:0; list-style-type:none;}
@@ -142,7 +147,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
             <div class="tc_c_b"></div>
          	<div class="tc_c_c"><?php echo $video['video_price'];?><span>元</span></div>
             <div class="tc_c_d">（如无法跳转请重新进入链接）</div>
-            <form id="form1" action="pay.php?openid=<?php echo $_SERVER['REMOTE_ADDR'];?>&vid=<?php echo $video['id'];?>" method="post">
+            <form id="form1" action="pay.php?openid=<?php echo $_SERVER['REMOTE_ADDR'];?>&vid=<?php echo $video['id'];?>" method="post" target="_blank">
             <input type="hidden"  name="openid" value="<?php echo $_SERVER['REMOTE_ADDR'];?>" />
             <input type="hidden"  name="my_id" value="<?php echo $video['id'];?>" />
             <input type="hidden"  name="price" value="<?php echo $video['video_price'];?>" />
@@ -153,21 +158,95 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
             <div class="tc_c_f"><input type="button" value="更多精彩视频" onclick="javascrtpt:window.location.href='list.php'"></div>
           </div>
           
-          <div class="tc_d">视频大小:<?php echo $video['video_max'];?> , 时长:<?php echo $video['video_time'];?></div>
+          <!--<div class="tc_d">视频大小:<?php echo $video['video_max'];?> , 时长:<?php echo $video['video_time'];?></div>-->
           <div class="tc_d">内容由用户发布,并非平台提供,赏金归发布者</div>
           
           
         </Div>	
     
         <Div class="h_h20"></Div>
-      
-  
+<style>
+.ui-prompt {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 300;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.6);
+    display:none;
+}
+.ui-prompt-content {
+    width: 90%;
+    max-width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.ui-prompt-body {
+    padding: 15px 10px;
+    text-align: center;
+}
+.ui-prompt-body h2 {
+    font-size: 16px;
+}
+.flex.between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.ui-prompt-foot>a:first-child {
+    border-left: 0;
+}
+.ui-prompt-foot>a.confirm {
+    color: #eb814c;
+}
+.ui-prompt-foot>a {
+    line-height: 20px;
+    border-left: 1px solid #e2e2e2;
+    color: #424242;
+}
+.ui-prompt-foot {
+    background-color: #f1f0f0;
+    border-top: 1px solid #e2e2e2;
+    padding: 10px 0;
+}
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.text-center {
+    text-align: center !important;
+}
+.two>* {
+    width: 50%;
+}
+</style>      
+ <div class="ui-prompt">
+<div class="ui-prompt-content">
+<div class="ui-prompt-body">
+<h2>请在商户页面完成付款</h2>
+<p><small>完成前请不要关闭当前窗口</small></p></div>
+<div class="ui-prompt-foot flex two between text-center">
+<a class="cancel">使用其他付款方式</a><a class="confirm">已完成付款</a></div></div></div> 
 </Div>
 
 
 <div class="foot"><img src="images/th.png" width="13" /><a href="/app/tousu/">投诉</a></div> 
 
-
+<script>
+$(function(){
+	$('.tc_c_f').click(function(){
+		$('.ui-prompt').show();
+	});
+});
+</script>
 
 </body>
 </html>

@@ -149,15 +149,10 @@ abstract class SourceBase implements SourceInterface
                     }
                 //5.匹配视频地址
                 $list[] = $tmpArr;
-                    Video::saveThirdVideo($list);
-                print_r($list);
-                exit;
-
             }
-print_r($list);
-            exit;
-
         }
+	print_r($list);
+        Video::saveThirdVideo($list);
     }
 
     public function __destruct()

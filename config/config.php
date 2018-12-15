@@ -6,7 +6,7 @@ class Config
 	public static $host = 'http://cl6688.phpbool.com/';
 	
 	public static $dbuser = 'root';
-	public static $dbpwd = 'root';
+	public static $dbpwd = 'deviceplanet';
 	public static $dbname = 'video_store';
 	public static $dbhost = '127.0.0.1';
 	
