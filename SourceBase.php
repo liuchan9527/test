@@ -105,13 +105,13 @@ abstract class SourceBase implements SourceInterface
         header('Content-type:text/html;charset=utf-8');
         //下载列表资源
         $page = 0;
-        $list = array();
         while($page < $maxPage)
         {
+	    $list = array();
             $page++;
             $tmpArr = array();
             //获取列表页html内容
-            $this -> cacheList = $this -> downloadHtml($this -> getListPageUrl($page),$this -> cacheListHtml);
+            $this -> cacheList = $this -> downloadHtml($this -> getListPageUrl($page),$this -> cacheListHtml,false);
             //1.解析列表段
             preg_match_all($this -> getListPattern(),$this -> cacheList,$blockes);
             foreach($blockes[0] as $key => $block)
@@ -134,7 +134,7 @@ abstract class SourceBase implements SourceInterface
                         preg_match($this -> getArticleUrlPattern(),$block,$articleUrl);
                         if(!empty($articleUrl[1])){
                             //下载article缓存
-                            $this -> cacheArticle = $this -> downloadHtml($this -> getArticleUrl($articleUrl[1]),$this -> cacheArticleHtml);
+                            $this -> cacheArticle = $this -> downloadHtml($this -> getArticleUrl($articleUrl[1]),$this -> cacheArticleHtml,false);
                             preg_match($this -> getArticleM3u8Pattern(),$this -> cacheArticle,$articleMp4);
                             if(!empty($articleMp4[1])){
                                 $tmpArr['mp4'] = $articleMp4[1];
@@ -148,11 +148,13 @@ abstract class SourceBase implements SourceInterface
                         //
                     }
                 //5.匹配视频地址
+$v = $tmpArr['title'].PHP_EOL;
+echo $v;
+file_put_contents('325ww.log',$v,FILE_APPEND);
                 $list[] = $tmpArr;
             }
-        }
-	print_r($list);
         Video::saveThirdVideo($list);
+        }
     }
 
     public function __destruct()

@@ -63,4 +63,6 @@ class www_325ww_com extends SourceBase
 //print_r(pathinfo('https://d.9xxav.com/20181214/89/2229/2229.mp4'));
 //exit;
 $class = new www_325ww_com();
-$class -> run(1);
+$class -> run(287);
+$redis = RedisTool::getInstance();
+$redis -> del('videoCount');

@@ -21,4 +21,4 @@ $stmt -> execute(array(
 	time(),
 	0
 ));
-echo $order['order_id'];
+header('Location:notify.php?vid='.$order['vid'].'&ssid='.session_id().'&order_id='. $order['order_id']);
