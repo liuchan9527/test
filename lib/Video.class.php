@@ -24,6 +24,24 @@ class Video
         $videos = Db::query($sql);
         return $videos;
     }
+//获取免费播放次数
+public static function getFreePlayTimes($ssid)
+{
+ //一天生成一个免费key
+ $key = 'Free:'.date('Ymd');
+ $redis = RedisTool::getInstance();
+ if($redis -> sIsMember($key,$ssid)){
+   return 0;
+ }
+ return 1;
+}
+//使用免费播放
+public static function useFreePlay($ssid)
+{
+ $key = 'Free:'.date('Ymd');
+ $redis = RedisTool::getInstance();
+ $redis -> sAdd($key,$ssid);
+}
 public static function getVideoCount()
 {
   $key = 'videoCount';

@@ -5,10 +5,17 @@ $id = $_GET['vid']+0;
 if(!$id){
     header('Location:list.php');
 }
+//检查是否免费播放
+$freePlay = Video::getFreePlayTimes(session_id());
+if($freePlay){
+ //使用免费播放机会
+ Video::useFreePlay(session_id());
+}else{
 //检查支付
 $isPay = Video::canPlay($id,session_id());
 if(!$isPay){
     header('Location:buy.php?vid='.$id);
+}
 }
 $video = Video::getVideoById($id);
 if(!$video){

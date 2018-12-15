@@ -1,6 +1,11 @@
 <?php
 include('init.php');
 $id = $_GET['vid'];
+//新客户端免费享受3次观看机会
+$freePlay = Video::getFreePlayTimes(session_id());
+if($freePlay > 0){
+  header('Location:play.php?vid='.$id);
+}
 if(!$id){
     header('Location:list.php');
 }
