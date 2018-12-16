@@ -9,6 +9,7 @@ abstract class SourceBase implements SourceInterface
     protected $cacheList = '';
     protected $cacheArticle = '';
     protected $listUrl = '';//列表URL地址
+    protected $types = '';
 
     public function __construct()
     {
@@ -22,6 +23,10 @@ abstract class SourceBase implements SourceInterface
      */
     abstract protected function getListPageUrl($page);
 
+    abstract public function setType($id,$name);
+    protected function getType(){
+        return $this -> types;
+    }
     /**
      * 获取列表块匹配表达式
      * @return mixed
@@ -85,7 +90,7 @@ abstract class SourceBase implements SourceInterface
         curl_setopt($ch,CURLOPT_URL,$url);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
         curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch,CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch,CURLOPT_TIMEOUT, 15);
         curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
         $result = curl_exec ( $ch );
         if(curl_errno($ch)){
@@ -98,20 +103,28 @@ abstract class SourceBase implements SourceInterface
 
     /**
      * 主方法
+     * @param $startPage int 起始页
      * @param $maxPage int 拉取最大页码
      */
-    public function run($maxPage = 10)
+    public function run($startPage = 1,$maxPage = 10)
     {
         header('Content-type:text/html;charset=utf-8');
         //下载列表资源
-        $page = 0;
+        $page = $startPage - 1;
+        //分类列表名
+        $types = $this -> getType();
         while($page < $maxPage)
         {
 	    $list = array();
             $page++;
             $tmpArr = array();
+            $tmpArr['type_id'] = $types['typeid'];
+            $tmpArr['type_name'] = $types['typename'];
             //获取列表页html内容
+            echo $this -> getListPageUrl($page).PHP_EOL;
             $this -> cacheList = $this -> downloadHtml($this -> getListPageUrl($page),$this -> cacheListHtml,false);
+
+
             //1.解析列表段
             preg_match_all($this -> getListPattern(),$this -> cacheList,$blockes);
             foreach($blockes[0] as $key => $block)
@@ -149,7 +162,7 @@ abstract class SourceBase implements SourceInterface
                     }
                 //5.匹配视频地址
 $v = $tmpArr['title'].PHP_EOL;
-echo $v;
+echo mb_convert_encoding($v,'gb2312','utf-8');
 file_put_contents('325ww.log',$v,FILE_APPEND);
                 $list[] = $tmpArr;
             }

@@ -67,7 +67,7 @@ public static function canPlay($vid,$session_id)
      */
     public static function saveThirdVideo(array $videos)
     {
-        $sql = 'insert into third_video(video_name,video_price,video_url,video_pic,`time`) values(?,?,?,?,?)';
+        $sql = 'insert into third_video(video_name,video_price,video_url,video_pic,`time`,type_id,type_name) values(?,?,?,?,?,?,?)';
         $db = Db::getIns();
         foreach($videos as $video)
         {
@@ -77,7 +77,9 @@ public static function canPlay($vid,$session_id)
                 '3',
                 $video['m3u8'],
                 $video['img'],
-                time()
+                time(),
+                $video['type_id'],
+                $video['type_name']
             ));
         }
     }
