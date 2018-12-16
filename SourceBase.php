@@ -162,7 +162,8 @@ abstract class SourceBase implements SourceInterface
                     }
                 //5.匹配视频地址
 $v = $tmpArr['title'].PHP_EOL;
-echo mb_convert_encoding($v,'gb2312','utf-8');
+//echo mb_convert_encoding($v,'gb2312','utf-8');
+                echo $v;
 file_put_contents('325ww.log',$v,FILE_APPEND);
                 $list[] = $tmpArr;
             }

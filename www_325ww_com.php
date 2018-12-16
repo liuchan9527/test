@@ -74,6 +74,6 @@ class www_325ww_com extends SourceBase
 //exit;
 $class = new www_325ww_com();
 $class -> setType(1,'自拍偷拍');
-$class -> run(26,59);
+$class -> run(1,59);
 $redis = RedisTool::getInstance();
 $redis -> del('videoCount');
