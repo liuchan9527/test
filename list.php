@@ -102,7 +102,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
                   <div class="img_b">
                       <div class="img_b_a"><div class="z<?php echo mt_rand(1,4);?>">
                               <a href='buy.php?vid=<?php echo $video['id'];?>' target='_blank'>
-                                  <?php echo $video['video_name'];?>
+                                  【<?php echo $video['type_name'];?>】<?php echo $video['video_name'];?>
                               </a></div></div>
                       <!--<div class="img_b_b"> 视频时间：<?php echo $video['video_time'];?> 视频大小：<?php echo $video['video_max'];?></div>-->
                   </div>
