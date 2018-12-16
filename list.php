@@ -1,7 +1,9 @@
 <?php
 include('init.php');
 //15个
-$videos = Video::getTodayVideo(15,true);
+//$videos = Video::getTodayVideo(15,true);
+$page = isset($_GET['page']) ? $_GET['page']+0 : 1;
+$videos = Video::getVideoPage($page,20,true);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -73,8 +75,11 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
 .h_menu_nav{ display:block;}
 .foot{width:100%;}
 }
-  
+.loadmore{width:100%;text-align:center;font-size:14px;color:#0f0;}
+.loadmore a{padding:10px;color:#0f0;}
+
 </style>
+    <script src="https://cdn.bootcss.com/jquery/1.8.1/jquery.js"></script>
 </head>
 <body>
 <Div class="mass">
@@ -83,7 +88,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
        <font>如无法跳转请重新进入链接;此商户被多人投诉等提示请放心付款</font>
      </div>
     
-    <Div class="login_coty">
+    <div class="login_coty">
       <ul>
         
       
@@ -107,7 +112,16 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
           ?>
   			</ul>
          <div class="clear"></div>
-    </Div>
+        <div class='loadmore'>
+            <?php
+            if($page > 1){
+                echo '<a href="/list.php?page='.($page-1).'">上一页</a>';
+            }
+            echo '<span>第'.$page.'页</span>'
+            ?>
+            <a href='/list.php?page=<?php echo $page+1;?>'>下一页</a></div>
+
+</Div>
 </Div>
 
 

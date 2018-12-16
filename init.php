@@ -14,6 +14,8 @@ if(!Config::$debug){
 	ini_set('display_errors',true);
 }
 
+header('Content-type:text/html;charset:utf-8');
+
 
 
 function errorHandler($errno,$errstr,$errfile,$errline)

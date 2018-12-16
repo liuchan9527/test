@@ -41,6 +41,9 @@ public static function useFreePlay($ssid)
  $key = 'Free:'.date('Ymd');
  $redis = RedisTool::getInstance();
  $redis -> sAdd($key,$ssid);
+ if($redis -> ttl($key) == -1){
+     $redis -> expire($key,86400);
+ }
 }
 public static function getVideoCount()
 {
