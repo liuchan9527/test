@@ -7,7 +7,7 @@ $allow = array(
 $referCan = false;
 foreach ($allow as $a)
 {
-    if(strpos($refer,$a) != -1)
+    if(($aa = strpos($refer,$a)) !== false)
     {
         $referCan = true;
         break;
@@ -22,7 +22,7 @@ echo $header;
 $headerCan = false;
 foreach($allowHeaderss as $h)
 {
-    if(strpos($h,$header) != -1){
+    if(strpos($h,$header) !== false){
         $headerCan = true;
         break;
     }
