@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>投诉</title>
+    <link rel="stylesheet" href="./static/css/weui.min.css"/>
+    <link rel="stylesheet" href="./static/css/app.css"/>
+    <script>
+    // document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    //      WeixinJSBridge.call("hideOptionMenu")
+    //     WeixinJSBridge.call("hideToolbar")
+    // });
+    </script>
+</head>
+<body><h1 class="page-title">举报投诉</h1>
+
+  <form action="reportok.html" method="post">
+  <div class="weui-cells__title">请选择举报原因</div>
+  <div class="weui-cells weui-cells_radio">
+    <label class="weui-cell weui-check__label" for="1">
+      <div class="weui-cell__bd">
+        <p>色情低俗</p>
+      </div>
+      <div class="weui-cell__ft">
+        <input type="radio" class="weui-check" checked="checked" name="rule" id="1">
+        <span class="weui-icon-checked"></span>
+      </div>
+    </label>
+    <label class="weui-cell weui-check__label" for="2">
+      <div class="weui-cell__bd">
+        <p>暴力</p>
+      </div>
+      <div class="weui-cell__ft">
+        <input type="radio" class="weui-check" name="rule" id="2">
+        <span class="weui-icon-checked"></span>
+      </div>
+    </label>
+    <label class="weui-cell weui-check__label" for="3">
+      <div class="weui-cell__bd">
+        <p>诱导欺诈</p>
+      </div>
+      <div class="weui-cell__ft">
+        <input type="radio" class="weui-check" name="rule" id="3">
+        <span class="weui-icon-checked"></span>
+      </div>
+    </label>
+    <label class="weui-cell weui-check__label" for="4">
+      <div class="weui-cell__bd">
+        <p>政治敏感</p>
+      </div>
+      <div class="weui-cell__ft">
+        <input type="radio" class="weui-check" name="rule" id="4">
+        <span class="weui-icon-checked"></span>
+      </div>
+    </label>
+    <label class="weui-cell weui-check__label" for="5">
+      <div class="weui-cell__bd">
+        <p>侵权</p>
+      </div>
+      <div class="weui-cell__ft">
+        <input type="radio" class="weui-check" name="rule" id="5">
+        <span class="weui-icon-checked"></span>
+      </div>
+    </label>
+    <label class="weui-cell weui-check__label" for="6">
+      <div class="weui-cell__bd">
+        <p>其他</p>
+      </div>
+      <div class="weui-cell__ft">
+        <input type="radio" class="weui-check" name="rule" id="6">
+        <span class="weui-icon-checked"></span>
+      </div>
+    </label>
+  </div>
+  <div class="weui-cells__tips">请确保您的举报行为基于善意</div>
+  <div class="weui-btn-area">
+      <input type="hidden" name="token" value="A8bG" />
+      <input class="weui-btn weui-btn_primary" name="submit" type="submit" value="确定" />
+  </div>
+  </form>
+<script>
+// wx.ready(function(){
+//   wx.hideAllNonBaseMenuItem();
+//   if (typeof(wxready)=="function") {
+//     wxready();
+//   }
+// });
+</script>
+<script>;</script><script type="text/javascript" src="http://luo.0466x9.cn/app/index.php?i=2&c=utility&a=visit&do=showjs&m=czt_tushang"></script></body>
+</html>
