@@ -55,7 +55,8 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
 .type{position:absolute;width:100%;z-index:1; bottom:40px; height:40px; line-height:28px; text-align:center; color:#6A6A6A; background:url(images/type.jpg) bottom left repeat-x; font-size:13px; }
 .foot{ background:#302f34; height:40px; line-height:38px; text-align:center; width:100%; position: absolute; z-index:1; bottom:0px;color:#CCC;}
 .foot img{ position:relative;top:0px; padding-right:5px;}
-.foot a{color:#CCC; text-decoration:none;}
+.foot a{color:#CCC; text-decoration:none;background: rgba(135, 135, 135, 0.2);display:block;height:30px;
+    line-height: 30px;width:100%;}
 .foot a:hover{color:#CCC; text-decoration:none;}
 
 .ad{ position:absolute; z-index:1; width:100%; text-align:center; height:60px; overflow:hidden;}
@@ -243,7 +244,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
 </Div>
 
 
-<div class="foot"><img src="images/th.png" width="13" /><a href="/app/tousu/">投诉</a></div> 
+<div class="foot"><a href="/reports.html">投诉</a></div>
 
 <script>
 $(function(){
