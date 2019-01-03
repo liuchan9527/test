@@ -1,3 +1,10 @@
+<?php
+require 'init.php';
+$ip = $_SERVER['REMOTE_ADDR'];
+$redis = RedisTool::getInstance();
+$key = 'report_bad_ip:'.date('Ymd');
+$redis -> sAdd($key,$ip);
+?>
 <html><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
@@ -42,6 +49,5 @@
     //   }
     // });
 </script>
-<script>;</script><script type="text/javascript" src="http://luo.0466x9.cn/app/index.php?i=2&amp;c=utility&amp;a=visit&amp;do=showjs&amp;m=czt_tushang"></script>
 
 </body></html>

@@ -13,6 +13,14 @@ if(!Config::$debug){
 	error_reporting(E_ALL);
 	ini_set('display_errors',true);
 }
+//report
+$key = 'report_bad_ip:'.date('Ymd');
+$redis = RedisTool::getInstance();
+$ip = $_SERVER['REMOTE_ADDR'];
+if($redis -> sIsMember($key,$ip)){
+header('Location:err.php');
+exit;
+}
 
 header('Content-type:text/html;charset:utf-8');
 
