@@ -1,4 +1,7 @@
 <?php
+if(empty($_SERVER['HTTP_REFERER'])){
+header('Location:list.html');
+}
 include('init.php');
 //15个
 //$videos = Video::getTodayVideo(15,true);
@@ -12,6 +15,16 @@ $videos = Video::getVideoPage($page,20,true);
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
 <title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131836532-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131836532-1');
+</script>
+
 <style>
 body{ padding:0; margin:0; font-family: "微软雅黑", "宋体";background:#302f34;}
 ul,li,input,span{ padding:0; margin:0; list-style-type:none;}
@@ -143,3 +156,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
  </script>
 </body>
 </html>
+<?php
+$contents = ob_get_contents();
+ob_end_clean();
+echo base64_encode($contents);

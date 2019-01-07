@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 require_once 'config/config.php';
 require_once 'lib/Db.class.php';
 require_once 'lib/Video.class.php';

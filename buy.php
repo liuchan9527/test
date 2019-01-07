@@ -31,7 +31,17 @@ if(Video::canPlay($id,session_id())){
 //function hh() {history.pushState(history.length+1, "message", "#"+new Date().getTime());}  
 //function jp() {location.href="http://www.qq.com/babygohome/?pgv_ref=404";}//返回地址
 //setTimeout('hh();', 50);  
-</script> 
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131836532-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131836532-1');
+</script>
+ 
 <script src="https://cdn.bootcss.com/jquery/1.8.1/jquery.js"></script>
 <style>
 body{ padding:0; margin:0; font-family: "微软雅黑", "宋体";background:#302f34;}

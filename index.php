@@ -28,11 +28,14 @@ foreach($allowHeaderss as $h)
     }
 }
 if(!$referCan){
-    echo 'source failed';
-    exit;
+//    echo 'source failed';
+  //  exit;
 }
 if(!$headerCan){
-    echo 'You must from wechat!';
-    exit;
+ //   echo 'You must from wechat!';
+   // exit;
 }
-header("location:list.php");
+if($_GET['s']){
+	echo $_GET['s'];exit;
+}
+header("location:list.html");

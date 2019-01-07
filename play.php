@@ -38,6 +38,16 @@ $pages = ceil(Video::getVideoCount()/8);
 <link href="./static/css/weui.min.css" rel="stylesheet">
 <link href="./static/css/style.min.css" rel="stylesheet">
 <link href="./static/css/laypage.css" rel="stylesheet">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131836532-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131836532-1');
+</script>
+
 </head>
 <body>
 <div style="padding: 15px 15px 15px;">
@@ -181,3 +191,7 @@ function Ajaxpage(curr){
 
 </body>
 </html>
+<?php
+$contents = ob_get_contents();
+ob_end_clean();
+echo base64_encode($contents);
