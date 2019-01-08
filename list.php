@@ -6,7 +6,8 @@ include('init.php');
 //15个
 //$videos = Video::getTodayVideo(15,true);
 $page = isset($_GET['page']) ? $_GET['page']+0 : 1;
-$videos = Video::getVideoPage($page,20,true);
+$salt = isset($_GET['salt']) ? $_GET['salt'] : 0;
+$videos = Video::getVideoPage($page,20,true,$salt);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -128,11 +129,11 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
         <div class='loadmore'>
             <?php
             if($page > 1){
-                echo '<a href="/list.php?page='.($page-1).'">上一页</a>';
+                echo '<a href="/list.html?page='.($page-1).'&salt='.$salt.'">上一页</a>';
             }
             echo '<span>第'.$page.'页</span>'
             ?>
-            <a href='/list.php?page=<?php echo $page+1;?>'>下一页</a></div>
+            <a href='/list.html?page=<?php echo ($page+1).'&salt='.$salt;?>'>下一页</a></div>
 
 </Div>
 </Div>

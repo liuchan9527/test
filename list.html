@@ -22,9 +22,9 @@ var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
 var r = window.location.search.substr(1).match(reg);
 if(r!=null)return  unescape(r[2]); return null;
 }
-id=GetQueryString("vid");
+id=GetQueryString("salt");
 loadScript('/static/js/jquery.min.js',function(){
-$.get('list.php?vid='+id+'&t='+new Date().getTime(),{},function(res){
+$.get('list.php?salt='+id+'&t='+new Date().getTime(),{},function(res){
 var b = new Base64();  
 var str = b.decode(res);
 document.write(str);

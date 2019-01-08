@@ -16,10 +16,12 @@ class Video
         return Db::getOne('select * from '.self::$videoTable.' where id = '.$id);
     }
 
-    public static function getVideoPage($page = 1,$count = 8,$pic = false)
+    public static function getVideoPage($page = 1,$count = 8,$pic = false,$salt = 0)
     {
-        $where = $pic ? ' video_pic != "" ' : ' video_pic = "" ';
-
+	$where = '1=1';
+        $where .= $pic ? ' and video_pic != "" ' : ' and video_pic = "" ';
+	$salt = $salt == 0 ? date('j') : $salt;
+	$where .= ' and id%'.$salt.'=0';
         $sql = 'select * from '.self::$videoTable.' where '.$where.' order by time desc limit '.($page-1)*$count.','.$count;
         $videos = Db::query($sql);
         return $videos;
