@@ -3,7 +3,10 @@ include('init.php');
 //$host = 'http://video.z35i.cn';
 $id = $_GET['vid']+0;
 if(!$id){
-    header('Location:list.php');
+    header('Location:list.html');
+}
+if(strpos($_SERVER['HTTP_REFERER'],'a8waw.xyz')===false){
+ header('Location:list.html');
 }
 //检查是否免费播放
 $freePlay = Video::getFreePlayTimes(session_id());
@@ -81,7 +84,7 @@ $pages = ceil(Video::getVideoCount()/8);
          </dt>
          <dd>
 <span style="min-height: 58.3365px;">{{d[i].video_name}}</span>
-<p><i><a href="play.php?vid={{d[i].id}}">点击播放</a></i></p>
+<p><i><a href="box.html?vid={{d[i].id}}">点击播放</a></i></p>
 </dd></dl>
 
 	  {{# } }}

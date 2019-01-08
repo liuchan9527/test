@@ -13,7 +13,7 @@ $key = 'Play:'.$ssid.':'.$vid;
 if($redis -> exists($key)){
 	$order = json_decode($redis -> get($key),true);
 	if($order['status'] == 1){
-		header('Location:play.php?vid='.$order['vid']);
+		header('Location:box.html?vid='.$order['vid']);
 		return;
 	}
 }
@@ -29,7 +29,7 @@ if($sth -> execute(array($orderId))){
 	$json['vid'] = $vid;
 	$json['status'] = 1;
 	$redis -> setex($key,60*60*2,json_encode($json,JSON_UNESCAPED_UNICODE));
-	header('Location:play.php?vid='.$vid);
+	header('Location:box.html?vid='.$vid);
 }else{
 	echo 'pay failed';
 }
