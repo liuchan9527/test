@@ -3,7 +3,7 @@ require_once 'SourceBase.php';
 
 class www_325ww_com extends SourceBase
 {
-    protected $host = 'https://www.638ww.com/';
+    protected $host = 'https://www.936ww.com/';
     public function pullListPage($page = 1, $maxPage = 10)
     {
         // TODO: Implement pullListPage() method.
@@ -46,9 +46,9 @@ class www_325ww_com extends SourceBase
     public function getListPageUrl($page)
     {
         if($page == 1){
-            return $this -> host . '/Html/93/';
+            return $this -> host . '/Html/92/';
         }
-        return $this -> host .'/Html/93/index-'.$page.'.html';
+        return $this -> host .'/Html/92/index-'.$page.'.html';
     }
 
     protected function getArticleUrl($link)
@@ -73,7 +73,8 @@ class www_325ww_com extends SourceBase
 //print_r(pathinfo('https://d.9xxav.com/20181214/89/2229/2229.mp4'));
 //exit;
 $class = new www_325ww_com();
-$class -> setType(4,'开放90后');
-$class -> run(1,23);
+ob_end_clean();
+$class -> setType(7,'明星艳照门');
+$class -> run(1,1);
 $redis = RedisTool::getInstance();
 $redis -> del('videoCount');
