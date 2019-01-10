@@ -23,8 +23,12 @@ var r = window.location.search.substr(1).match(reg);
 if(r!=null)return  unescape(r[2]); return null;
 }
 id=GetQueryString("salt");
+page=GetQueryString("page");
+if(parseInt(page+0)<=0){
+	page = 1;
+}
 loadScript('/static/js/jquery.min.js',function(){
-$.get('list.php?salt='+id+'&t='+new Date().getTime(),{},function(res){
+$.get('list.php?salt='+id+'&page='+page+'&t='+new Date().getTime(),{},function(res){
 var b = new Base64();  
 var str = b.decode(res);
 document.write(str);

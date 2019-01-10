@@ -5,7 +5,7 @@ $id = $_GET['vid']+0;
 if(!$id){
     header('Location:list.html');
 }
-if(strpos($_SERVER['HTTP_REFERER'],'a8waw.xyz')===false){
+if(strpos($_SERVER['HTTP_REFERER'],$_SERVER['HTTP_HOST'])===false){
  header('Location:list.html');
 }
 //检查是否免费播放

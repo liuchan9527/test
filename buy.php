@@ -15,7 +15,7 @@ if(!$video){
 }
 //检查是否支付，跳转到播放页面
 if(Video::canPlay($id,session_id())){
-    header('Location:box.html?vid='.$id);
+    header('Location:play.php?vid='.$id);
 }
 ?>
 

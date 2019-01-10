@@ -142,6 +142,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
  <script>
         function onBridgeReady() {
             WeixinJSBridge.call('hideOptionMenu');
+            WeixinJSBridge.call('hideToolbar');
         }
 
         if (typeof WeixinJSBridge == "undefined") {
