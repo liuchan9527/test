@@ -29,7 +29,7 @@ $pages = ceil(Video::getVideoCount()/8);
 <!DOCTYPE html>
 <html>
 <head>
-<title>视频列表</title>
+<title><?php echo $video['video_name'];?> - 视频列表</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
 <script type="text/javascript" src="./static/js/ckplayer.min.js" charset="UTF-8"></script>

@@ -15,7 +15,7 @@ $videos = Video::getVideoPage($page,20,true,$salt);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
-<title></title>
+<title>做爱视频,成人电影,在线综合 亚洲 欧美</title>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131836532-1"></script>
 <script>

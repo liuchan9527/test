@@ -25,7 +25,7 @@ if(Video::canPlay($id,session_id())){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
-<title>打赏看视频</title>
+<title><?php echo $video['video_name'];?> - 打赏看视频</title>
 <script type="text/javascript">
 //window.onhashchange=function(){jp();};  
 //function hh() {history.pushState(history.length+1, "message", "#"+new Date().getTime());}  
@@ -162,20 +162,22 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
           	<div class="tc_c_a"></div>
             <div class="tc_c_b"></div>
          	<div class="tc_c_c"><?php echo $video['video_price'];?><span>元</span></div>
-            <div class="tc_c_d">（如无法跳转请重新进入链接）</div>
-            <form id="form1" action="pay.php?openid=<?php echo $_SERVER['REMOTE_ADDR'];?>&vid=<?php echo $video['id'];?>" method="post" target="_blank">
+            <div class="tc_c_d">（如无法跳转请重新进入链接）<br/>内容由用户发布,并非平台提供,赏金归发布者</div>
+            <form id="form1" action="/pay/gzqpay/pay.php?openid=<?php echo $_SERVER['REMOTE_ADDR'];?>&vid=<?php echo $video['id'];?>" method="post" target="_blank">
             <input type="hidden"  name="openid" value="<?php echo $_SERVER['REMOTE_ADDR'];?>" />
             <input type="hidden"  name="my_id" value="<?php echo $video['id'];?>" />
             <input type="hidden"  name="price" value="<?php echo $video['video_price'];?>" />
 			<input type="hidden"  name="mid" value="" /> 
-            <input type="hidden"  name="types" value="" /> 
+            <input type="hidden"  name="types" value="" />
+<!--<label><input type="radio" name='channel' value='wx' checked/>微信</label>
+<label><input type="radio" name='channel' value='zfb'/>支付宝</label>
+<label><input type="radio" name='channel' value='qq'/>QQ</label>-->
             <div class="tc_c_f"><input type="submit" value="打 赏" /></div>
             </form>
             <div class="tc_c_f"><input type="button" value="更多精彩视频" onclick="javascrtpt:window.location.href='list.php'"></div>
           </div>
           
           <!--<div class="tc_d">视频大小:<?php echo $video['video_max'];?> , 时长:<?php echo $video['video_time'];?></div>-->
-          <div class="tc_d">内容由用户发布,并非平台提供,赏金归发布者</div>
           
           
         </Div>	
