@@ -15,6 +15,7 @@ body,html{height:100%;}
 <img src="/static/img/loding.gif" style="margin: 0 auto;width: 24px;vertical-align: middle;">加载中请稍等...</div>
 </div>
 <script language="javascript" src="/static/js/base64.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.8.0/jquery-1.8.0.min.js"></script>
 <script type="text/javascript">
 function GetQueryString(name){
 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
@@ -23,13 +24,13 @@ var r = window.location.search.substr(1).match(reg);
 if(r!=null)return  unescape(r[2]); return null;
 }
 id=GetQueryString("vid");
-loadScript('/static/js/jquery.min.js',function(){
+window.onload = function(){
 $.get('play.php?vid='+id+'&t='+new Date().getTime(),{},function(res){
 var b = new Base64();  
 var str = b.decode(res);
-document.write(str);
+$('body').html(str);
 });
-});
+};
 function loadScript(url, callback){
 var script = document.createElement("script");
 script.type = "text/javascript";
@@ -47,9 +48,6 @@ callback();
 }
 script.src = url;
 document.getElementsByTagName("head")[0].appendChild(script);
-}
-document.ontouchmove = function(e){
-e.preventDefault();
 }
 </script>
 </body>
