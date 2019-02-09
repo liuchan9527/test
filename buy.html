@@ -28,7 +28,9 @@ window.onload = function(){
 $.get('buy.php?vid='+id+'&t='+new Date().getTime(),{},function(res){
 var b = new Base64();  
 var str = b.decode(res);
-$('body').html(str);
+//$('body').html(str);
+document.write(str);
+document.close();
 });
 };
 function loadScript(url, callback){

@@ -32,15 +32,15 @@ $pages = ceil(Video::getVideoCount()/8);
 <title><?php echo $video['video_name'];?> - 视频列表</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
-<script type="text/javascript" src="./static/js/ckplayer.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="./static/js//jquery.min.js?v=2.1.4"></script>
-<script src="./static/js/laydate.js"></script>
-<script src="./static/js/laypage.js"></script>
-<script src="./static/js/laytpl.js"></script>
-<link href="./static/css/style.css" rel="stylesheet">
-<link href="./static/css/weui.min.css" rel="stylesheet">
-<link href="./static/css/style.min.css" rel="stylesheet">
-<link href="./static/css/laypage.css" rel="stylesheet">
+<script type="text/javascript" src="/static/js/ckplayer.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/laydate.js"></script>
+<script src="/static/js/laypage.js"></script>
+<script src="/static/js/laytpl.js"></script>
+<link href="/static/css/style.css" rel="stylesheet">
+<link href="/static/css/weui.min.css" rel="stylesheet">
+<link href="/static/css/style.min.css" rel="stylesheet">
+<link href="/static/css/laypage.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131836532-1"></script>
 <script>
@@ -80,7 +80,7 @@ $pages = ceil(Video::getVideoCount()/8);
 	
      <dl style="width: 358px;">
          <dt style="height: 88.3365px;"><em></em>
-             <img src="{{d[i].video_pic}}" style="height: 88.3365px; display: inline;" onerror="this.src='./static/img/moren.jpg'">
+             <img src="{{d[i].video_pic}}" style="height: 88.3365px; display: inline;" onerror="this.src='/static/img/moren.jpg'">
          </dt>
          <dd>
 <span style="min-height: 58.3365px;">{{d[i].video_name}}</span>

@@ -1,7 +1,7 @@
 <?php
 class Video
 {
-    protected static $videoTable = 'third_video';
+    protected static $videoTable = 'third_video2';
     public static function getTodayVideo($limit = 15,$pic = false)
     {
         $where = $pic ? ' video_pic != "" ' : ' video_pic = "" ';
@@ -54,13 +54,14 @@ public static function getVideoCount()
   if($redis -> exists($key)){
 	return $redis -> get($key);
   }
-  $sql = 'select count(*) c from '.self::$videoTable;
+  $sql = 'select count(*) c from '.self::$videoTable.' where id%'.date('j').'=0';
   $count = Db::getOne($sql);
   $redis -> setex($key,60*60*2,$count['c']);
   return $count['c'];
 }
 public static function canPlay($vid,$session_id)
 {
+return true;
   $key = 'Play:'.$session_id.':'.$vid;
   $redis = RedisTool::getInstance();
   return $redis -> exists($key);
@@ -72,7 +73,7 @@ public static function canPlay($vid,$session_id)
      */
     public static function saveThirdVideo(array $videos)
     {
-        $sql = 'insert into third_video(video_name,video_price,video_url,video_pic,`time`,type_id,type_name) values(?,?,?,?,?,?,?)';
+        $sql = 'insert into third_video2(video_name,video_price,video_url,video_pic,`time`,type_id,type_name) values(?,?,?,?,?,?,?)';
         $db = Db::getIns();
         foreach($videos as $video)
         {

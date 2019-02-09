@@ -174,7 +174,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
 <label><input type="radio" name='channel' value='qq'/>QQ</label>-->
             <div class="tc_c_f"><input type="submit" value="打 赏" /></div>
             </form>
-            <div class="tc_c_f"><input type="button" value="更多精彩视频" onclick="javascrtpt:window.location.href='list.php'"></div>
+            <div class="tc_c_f"><input type="button" value="更多精彩视频" onclick="javascrtpt:window.location.href='list.html'"></div>
           </div>
           
           <!--<div class="tc_d">视频大小:<?php echo $video['video_max'];?> , 时长:<?php echo $video['video_time'];?></div>-->

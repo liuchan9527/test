@@ -70,6 +70,7 @@ abstract class SourceBase implements SourceInterface
     abstract protected function getListM3u8Pattern();
     abstract protected function getArticleUrl($link);
     abstract protected function handleM3u8($mp4Url);
+    abstract protected function getVideoM3u8($mp4str);
     /**
      * 下载页面并存储到临时文件
      * @param $url
@@ -132,7 +133,7 @@ abstract class SourceBase implements SourceInterface
                 //2.解析图片地址
                 preg_match($this -> getImgPattern(),$block,$imgsrc);
                 if(!empty($imgsrc[1])){
-                    $tmpArr['img'] = $imgsrc[1];
+                    $tmpArr['img'] = 'http://yinongyouxuan.wang'.$imgsrc[1];
                 }
 
                 //3.解析标题
@@ -159,11 +160,12 @@ abstract class SourceBase implements SourceInterface
 
                     }else{
                         //
+			$tmpArr['m3u8'] = $this->getVideoM3u8($tmpArr['img']);
                     }
                 //5.匹配视频地址
 $v = $tmpArr['title'].PHP_EOL;
 //echo mb_convert_encoding($v,'gb2312','utf-8');
-                echo $v;
+                print_r($v);
 file_put_contents('325ww.log',$v,FILE_APPEND);
                 $list[] = $tmpArr;
             }
