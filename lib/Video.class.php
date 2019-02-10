@@ -22,13 +22,15 @@ class Video
         $where .= $pic ? ' and video_pic != "" ' : ' and video_pic = "" ';
 	$salt = $salt == 0 ? date('j') : $salt;
 	$where .= ' and id%'.$salt.'=0';
-        $sql = 'select * from '.self::$videoTable.' where '.$where.' order by time desc limit '.($page-1)*$count.','.$count;
+	$where .= ' and status = 1';
+        $sql = 'select * from '.self::$videoTable.' where '.$where.' order by id asc limit '.($page-1)*$count.','.$count;
         $videos = Db::query($sql);
         return $videos;
     }
 //获取免费播放次数
 public static function getFreePlayTimes($ssid)
 {
+return 0;
  //一天生成一个免费key
  $key = 'Free:'.date('Ymd');
  $redis = RedisTool::getInstance();
@@ -61,7 +63,6 @@ public static function getVideoCount()
 }
 public static function canPlay($vid,$session_id)
 {
-return true;
   $key = 'Play:'.$session_id.':'.$vid;
   $redis = RedisTool::getInstance();
   return $redis -> exists($key);
