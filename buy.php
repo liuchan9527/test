@@ -25,7 +25,7 @@ if(Video::canPlay($id,session_id())){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
-<title><?php echo $video['video_name'];?> - 打赏看视频</title>
+<title>白屏请等待一下</title>
 <script type="text/javascript">
 //window.onhashchange=function(){jp();};  
 //function hh() {history.pushState(history.length+1, "message", "#"+new Date().getTime());}  
@@ -163,7 +163,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
             <div class="tc_c_b"></div>
          	<div class="tc_c_c"><?php echo $video['video_price'];?><span>元</span></div>
             <div class="tc_c_d">（如无法跳转请重新进入链接）<br/>内容由用户发布,并非平台提供,赏金归发布者</div>
-            <form id="form1" action="/pay/gzqpay/pay.php?openid=<?php echo $_SERVER['REMOTE_ADDR'];?>&vid=<?php echo $video['id'];?>" method="post" target="_blank">
+            <form id="form1" action="/pay/gzqpay/pay.php?openid=<?php echo $_SERVER['REMOTE_ADDR'];?>&vid=<?php echo $video['id'];?>" method="post" >
             <input type="hidden"  name="openid" value="<?php echo $_SERVER['REMOTE_ADDR'];?>" />
             <input type="hidden"  name="my_id" value="<?php echo $video['id'];?>" />
             <input type="hidden"  name="price" value="<?php echo $video['video_price'];?>" />
@@ -261,7 +261,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
 <script>
 $(function(){
 	$('.tc_c_f').click(function(){
-		$('.ui-prompt').show();
+		//$('.ui-prompt').show();
 	});
 });
 </script>

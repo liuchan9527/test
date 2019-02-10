@@ -15,7 +15,7 @@ $videos = Video::getVideoPage($page,20,true,$salt);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
-<title>做爱视频,成人电影,在线综合 亚洲 欧美</title>
+<title>白屏请等待一下</title>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131836532-1"></script>
 <script>
@@ -115,7 +115,7 @@ input[type=button], input[type=submit], input[type=file], button { cursor: point
                       <img src='<?php echo $video['video_pic'];?>' width=80 height=55 onerror="this.src='./static/img/moren.jpg'"/>            </div>
                   <div class="img_b">
                       <div class="img_b_a"><div class="z<?php echo mt_rand(1,4);?>">
-                              <a href='buy.html?vid=<?php echo $video['id'];?>' target='_blank'>
+                              <a href='buy.html?vid=<?php echo $video['id'];?>'>
                                   <?php echo $video['video_name'];?>
                               </a></div></div>
                       <!--<div class="img_b_b"> 视频时间：<?php echo $video['video_time'];?> 视频大小：<?php echo $video['video_max'];?></div>-->
